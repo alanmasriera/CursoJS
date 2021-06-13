@@ -60,8 +60,211 @@
     </script>
 
     <script>
-
+        //Set es como un arreglo pero no iterable y con elementos unicos
         console.log("####################### Set")
+        const set = new Set([1,2,3,3,4,5,true,true,false,{},{},{},"Hola","Hola","HOLA"])
+        console.log(set)
+
+        set.add(1)
+        set.add(100)
+        console.log(set)
+
+        //para recorrer con for of o con foreach
+        for (item of set){
+            console.log(item)
+        }
+
+        set.forEach(item => console.log(item))
+
+        //No se puede obtener elementos como set[posicion], debo convertirlo a arreglo
+        let arr = Array.from(set)
+        console.log(arr[11])
+
+        //Para eliminar: set.delete("HOLA")
+        set.delete("HOLA")
+
+        //Para saber si contiene
+        set.has("Hola")
+    </script>  
+
+
+    <script>
+        //Maps es como un objeto, pero el nombre de las propiedades son cadenas de texto o cualquier cosa
+        console.clear()
+        console.log("####################### Set")
+        let mapa = new Map()
+        mapa.set("nombre","Alan")
+        mapa.set("apellido","Masriera")
+        mapa.set("Edad","29")
+
+        console.log(mapa)
+        console.log(mapa.size)
+        console.log(mapa.has("nombre"))
+        console.log(mapa.get("nombre"))
+        mapa.set("nombre","Alan Masriera")
+        console.log(mapa.get("nombre"))
+        
+        //Agrego una propiedad que no sea string
+        mapa.set(19,"diecinueve")
+        mapa.set({},"objeto")
+        mapa.set({},"objeto2")
+
+        for (let [key, value] of mapa){
+            console.log(`Key: ${key}, Valor: ${value}`)
+        }
+
+        //Podemos declararlo asi. Como un arreglo de tuplas
+        const mapa2 = new Map([
+            ["nombre","Icaro"],
+            ["edad","7"],
+            ["raza","Terval"],
+            [null,"nulo"]
+        ])
+        
+        for (let [key, value] of mapa2){
+            console.log(`mapa2 Key: ${key}, Valor: ${value}`)
+        }
+    </script>
+
+    <script>
+        //WeakSet y WeakMap son como los Set y Map pero con menos propiedades:
+            //no son iterables 
+            //no se puede borrar completo con el metodo clear
+            //no tiene propiedad size
+        console.clear()
+        console.log("####################### WeakSet y WeakMap")
+    </script>
+
+    <script>
+        //Iterables, iteradores
+        console.clear()
+        console.log("####################### Iterables, iteradores")
+        const iterable1 = [1,2,3,4,5]
+        const iterable2 = "Esto es un string"
+        //Accedo al iterador de nuestro iterable
+        const iterador1 = iterable1[Symbol.iterator]()
+        const iterador2 = iterable2[Symbol.iterator]()
+
+        console.log(iterable1)
+        console.log(iterador1)
+        console.log(iterable2)
+        console.log(iterador2)
+
+        console.log(iterador1.next())
+        console.log(iterador1.next())
+        console.log(iterador1.next())
+        console.log(iterador1.next())
+        console.log(iterador1.next())
+        console.log(iterador1.next())
+
+        let next = iterador2.next()
+
+        while (!next.done){
+            console.log(next.value)
+            next = iterador2.next()
+        }
+    </script>
+
+    <!-- <script>
+        //Generadores es la forma de ahcer iterable una funcion, con yield definimos la setapas que debemos 
+        //luego actuvar con next
+        console.clear()
+        console.log("####################### Generadores")
+
+        function* iterable(){
+            yield "hola"
+            console.log("Hola consola")
+            yield "hola2"
+            console.log("Seguimos con mas instruciones")
+            yield "hola3"
+            yield "hola4"
+        }
+
+        let iterador = iterable()
+        // console.log(iterador.next())
+        // console.log(iterador.next())
+        // console.log(iterador.next())
+        // console.log(iterador.next())
+        // console.log(iterador.next())
+
+        for (let y of iterador){
+            console.log(y)
+        }
+
+        const arrG = [...iterable()]
+        console.log(arrG)
+
+        function cuadrado(valor){
+            setTimeout(() => {
+               return console.log({valor,resultado:valor*valor}) 
+            }, Math.random()*1000);
+
+        }
+
+        console.log(cuadrado(10))
+        function* generador(){
+            console.log("inicia generador")
+            yield cuadrado(0)
+            yield cuadrado(1)
+            yield cuadrado(2)
+            yield cuadrado(3)
+            yield cuadrado(4)
+            yield cuadrado(5)
+            console.log("termina generador")
+        }
+
+        
+        let gen = generador()
+        for (let y of gen){
+            console.log(y)
+        }
+    </script> -->
+
+    <script>
+        //proxies Permite controlar la creacion de copias de objetos basados en otros (persona en este caso) 
+        //mediante handlers y aprobaciones
+        console.clear()
+        console.log("####################### Proxies")
+
+        const persona2 = {
+            nombre: "",
+            apellido: "",
+            edad: 0
+        }
+
+        const manejador = {
+            set(obj, prop, valor){
+                // if (Object.keys(obj).indexOf(prop) === -1){
+                //     return console.error(`la propiedad "${prop} no existe en persona2`)
+                // }
+                obj[prop] = valor
+            }
+
+        }
+
+        const alan = new Proxy(persona2, manejador)
+        alan.nombre = "Alan"
+        alan.apellido = "Masriera"
+        alan.edad = 29
+        alan.pepe = "Algo"
+        console.log(alan)
+        console.log(persona2)
+
+
+    </script>
+
+    <script>
+        //Propiedades dinamicas
+        console.clear()
+        console.log("####################### propiedades dinamicas")
+
+        const objUsuarios = {}
+        const usuarios= ["alan","Gonza","vero","flor","facu","claudio"]
+
+        console.log(objUsuarios)
+        usuarios.forEach((usuario, index) => objUsuarios[`id_${index}`] = usuario)
+
+        console.log(objUsuarios)
     </script>
 </body>
 </html>
