@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asincronia y Event Loop</title>
+</head>
+<body>
+    <h1>Asincronia y Even Loop</h1>
+    <!-- <script>
+        //Codigo sincrono bloqueante
+        (() => {
+            console.log(`Codigo Sincrono`)
+            console.log("INICIO")
+
+            function dos(){
+                console.log("dos")
+            }
+
+            function uno(){
+                console.log("uno")
+                dos()
+                console.log("tres")
+            }
+
+            uno()
+            console.log("FIN")
+            console.log("#################################")
+
+        })();
+
+        //Codigo Asincrono y no-bloquenate
+        (() => {
+            console.log("Codigo Asincrono")
+            console.log("INICIO")
+
+            function dos(){
+                setTimeout(function() {
+                    console.log("dos")
+                }, 500)
+            }
+
+            function uno(){
+                setTimeout(function (){
+                    console.log("uno")
+                }, 0)
+                dos()
+                console.log("tres ")
+            }
+
+            uno()
+            console.log("FIN")
+            
+
+        })()
+
+    </script> -->
+
+    <!-- <script>
+        //Callbacks
+        // function cuadradoCallback(value, callback){
+        //     setTimeout(() => {
+        //         callback(value, value * value)
+        //     }, 0 | Math.random() * 100);
+        // }
+
+        // cuadradoCallback(0, (value, result) => {
+        //     console.log("inicia Callback")
+        //     console.log(`Callback: ${value}, ${result}`)
+        // })
+
+
+        //Supongamos que tenemos el siguiente caso, 2 funciones que se ejecutan consecutivamente
+        console.log("##################")
+        function funcion1_1 (){
+            console.log("1_ mensaje 1")
+        }
+
+        function funcion2_1 (){
+            console.log("1_ mensaje 2")
+        }
+
+        funcion1_1()
+        funcion2_1()
+
+        //Si una de ellas tiene settimeout se terminan alternando las ejecuciones de las mismas
+        function funcion1_2 (){
+            setTimeout(() => {
+                console.log("2_ mensaje 1")
+            }, 1000);
+            
+        }
+
+        function funcion2_2 (){
+            console.log("2_ mensaje 2")
+        }
+
+        funcion1_2()
+        funcion2_2()
+
+        //Para solucionarlo podemos enviar la funcion 2 como callback dentro de la funcion 1 
+            //para que esta lo ejecute cuando se pueda
+        function funcion1_3 (fn){
+            setTimeout(() => {
+                console.log("3_ mensaje 1")
+                fn()
+            }, 1000);
+            
+        }
+
+        function funcion2_3 (){
+            console.log("3_ mensaje 2")
+        }
+
+        funcion1_3(funcion2_3)
+    </script> -->
+
+    <script>
+        //Promesas
+        //Son equivalentes a las callbacks pero con mejoras
+        console.log("############################# ")
+    </script>
+
+    <script>
+        //Async
+        //Complemento para promesas que mejora la estructura.
+    </script>
+
+    
+</body>
+</html>

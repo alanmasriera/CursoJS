@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuevos tipos de datos</title>
+</head>
+<body>
+    <h1>Nuevos tipos de datos</h1>
+
+    <script>
+        console.log("####################### Symbol")
+        //Symbol, para mantener objetos dem anera interna, por ejemplo el foreach no ejecuta los symbol.
+        //Seria como un private
+        let id1 = Symbol("id1")
+        let id2 = Symbol("id2")
+        let id3 = "hola"
+        let id4 = "hola"
+
+
+        console.log(`id1 y id2 son iguales: ${id1 === id2 }`)
+        console.log(`id3 y id4 son iguales: ${id3 === id4 }`)
+        console.log(id1, id2)
+        console.log(typeof id1, typeof id2)
+
+        //El texto que pongo dentro es solo visual, para que se muester si imprimo el objeto
+        const NOMBRE = Symbol("nombre")
+        const persona = {
+            [NOMBRE]: "Alan"
+        }
+        console.log(persona)
+
+        //Puedo agregar una variable que se llame igual y no va a pisar el symbol
+        persona.NOMBRE = "Alan Masriera"
+        console.log(persona)
+
+        //La forma de llamarla es con corchetes, pero debemos saber el nombre
+        console.log(persona.NOMBRE)
+        console.log(persona[NOMBRE])
+
+        //Puedo crear funciones como symbol tambien, y puede ser agregada despues de la definicion del objeto, 
+        //igual q un atributo o metodo normal
+        const SALUDAR = Symbol("saludar")
+        persona[SALUDAR] = function () {
+            console.log("Saludo en SALUDAR")
+        }
+        console.log(persona)
+        persona[SALUDAR]()
+
+        //Podemos ver que la propiedad symbol no se itera
+        for(let prop in persona){
+            console.log(prop)
+            //pero si podemos tomarla asi
+            console.log(persona[prop])
+        }
+
+        //Listar simbolos
+        console.log(Object.getOwnPropertySymbols(persona))
+    </script>
+
+    <script>
+
+        console.log("####################### Set")
+    </script>
+</body>
+</html>
