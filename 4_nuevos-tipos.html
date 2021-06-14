@@ -266,5 +266,58 @@
 
         console.log(objUsuarios)
     </script>
+
+    <script>
+        //Call, Applay y bind
+        console.clear()
+        console.log("####################### Call, Applay y bind")
+        console.log(this)
+        this.lugar = "Cotntexo Global"
+
+        function saludar(saludo,nombre){
+            console.log(`${saludo}${nombre}, estamos en: "${this.lugar}"`)
+        }
+
+        
+
+        const obj = {
+            lugar: "Gontexto objeto"
+
+        }
+
+        saludar("hola","alan")
+        //Estas permiten llamar estando en otro scope
+        saludar.call(obj,"hola", "Alan")
+        saludar.apply(obj,["hola", "Alan"])
+
+        const persona3 = {
+            nombre: "Alan",
+            saludar: function(){
+                console.log(`Hola ${this.nombre}`)
+            },
+            saludarArrow: ()=>{
+                console.log(`Hola ${this.nombre}`)
+            }
+        }
+
+        persona3.saludar()
+        persona3.saludarArrow()
+
+
+        //Podemos ver que el metodo que llama al metodo saludar de persona3 no utiliza el this de persona3, sino el de este objeto
+        const otraPersona = {
+            nombre: "Otro",
+            saludar: persona3.saludar,
+            saludarBind: persona3.saludar.bind(persona3)
+        }
+
+        otraPersona.saludar()
+        otraPersona.saludarBind()
+    </script>
+
+    <script>
+        //Json
+        
+    </script>
 </body>
 </html>
