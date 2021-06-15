@@ -81,3 +81,43 @@
         console.log($linkDOM.dataset.description)
         $linkDOM.dataset.description = "Otra descripcion"
         console.log($linkDOM.dataset.description)
+
+        //Estilos y variables
+        console.clear()
+        console.log("############### Estilos y variables ###############")
+        const $linkDOM2=(document.querySelector(".link-dom"))
+        console.log($linkDOM2.style)
+        console.log($linkDOM2.getAttribute("style"))
+        console.log($linkDOM2.style.backgroundColor)
+        console.log($linkDOM2.style.color)
+        console.log(window.getComputedStyle($linkDOM2))
+        console.log(window.getComputedStyle($linkDOM2).getPropertyValue("color"))
+
+        //Elimino la linea que tiene porqu es un enlase
+        $linkDOM2.style.setProperty("text-decoration","none")
+        //La convierto en bloque
+        $linkDOM2.style.setProperty("display","block")
+        $linkDOM2.style.width= "50%"
+        $linkDOM2.style.textAlign= "center"
+        $linkDOM2.style.marginLeft= "auto"
+        $linkDOM2.style.marginRight= "auto"
+        $linkDOM2.style.padding = "1rem"
+        $linkDOM2.style.borderRadius = "1rem"
+
+
+        //Variables CSS - custom properties CSS
+        //Accedo desde js a las variables del css
+        const $html = document.documentElement
+        const $body = document.body
+        let varDarkColor = getComputedStyle($html).getPropertyValue("--dark-color")
+        let varYellowColor = getComputedStyle($html).getPropertyValue("--yellow-color")
+        console.log(varDarkColor)
+        console.log(varYellowColor)
+
+        $body.style.backgroundColor = varDarkColor
+        $body.style.color = varYellowColor
+
+        //si lo modifino en el estilo cambia pero no aplica porque sigue aplicando el que tengo seteado en la variable de js varDarkColor, tengo que actualizarlo
+        $html.style.setProperty("--dark-color","pink")
+        varDarkColor = getComputedStyle($html).getPropertyValue("--dark-color")
+        //$body.style.backgroundColor = varDarkColor
