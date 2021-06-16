@@ -436,3 +436,47 @@
             apend (ultimo hijo)
             after (hermano siguiente)
         */
+
+            
+            
+            
+            
+            
+            
+            
+
+        //Manejador de eventos
+        console.clear()
+        console.log("############### Manejador de eventos ###############")
+        //manejador con atributo html. Se carga el nombre de la funcion en el html
+        function holaMundo(){
+            alert("Hola mundo")
+            console.log(event)
+        }
+        //manejador semantico. Se maneja desde js, buscando el elemento y agregando la funcion que hace ante dado evento
+        const $eventoSemantico = document.getElementById("evento-semantico")
+        $eventoSemantico.onclick = holaMundo //Si pongo los parentecis se ejecuta al cargar la paguina
+        $eventoSemantico.onclick = function(e){
+            alert("HOla mundo - Manejador de eventos semanticos")
+            //puedo pasar el paramerto q le mande o el event q esta por defecto siempre
+            console.log(e)
+            console.log(event)
+        }
+        //manejador multiple
+        const $eventoMultiple = document.getElementById("evento-multiple")
+        $eventoMultiple.addEventListener("click",holaMundo)
+        $eventoMultiple.addEventListener("click",(e) => {
+            alert("Hola mundo - Manejador de eventos multiple")
+            console.log(e)
+            console.log(e.type)
+            console.log(e.target)
+        })
+
+
+
+
+
+
+        //Eventos con Parámetros y Remover Eventos 
+        console.clear()
+        console.log("############### Eventos con Parámetros y Remover Eventos  ###############")
