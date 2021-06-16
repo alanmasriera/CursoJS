@@ -150,6 +150,7 @@
         $body.style.backgroundColor = varWhiteColor
         $body.style.color = varBlackColor
         const $cards = document.querySelector(".cards")
+        const $cloneCards = $cards.cloneNode(true)//Esto es de mas adelante
         $cards.style.backgroundColor = varBkgCardsColor
         const $allCard = document.querySelectorAll(".card")[1]
         console.log("asd")
@@ -359,3 +360,79 @@
         })
         
         $cards.appendChild($fragmentT)
+
+
+
+
+
+
+
+
+        //Modificar elementos (Old style)
+        console.clear()
+        console.log("############### Modificar elementos (Old style) ###############")
+        const $newCard = document.createElement("figure")
+        $newCard.innerHTML =  `<img src="https://placeimg.com/200/200/any" alt="any">
+        <figcaption>Any</figcaption>`
+        $newCard.classList.add("card")
+        $newCard.classList.add("cardOld")
+
+        //Esto reemplaza un elemento
+        //$cards.replaceChild($newCard,$cards.children[9])
+        //Esto inserta un elemento antes de otro
+        $cards.insertBefore($newCard, $cards.children[10])
+        //para eliminar
+        $cards.removeChild($cards.children[10])
+
+        //Puedo clonar elementos (true para que compue su contenido)
+        //const $cloneCards = $cards.cloneNode(true)
+        //Ejecute la clonacion mas arriba cuando el cards aun no tenia modificaciones.
+        $cloneCards.setAttribute("id","cards2")
+        $cloneCards.children[2].removeAttribute("style")
+        $cloneCards.children[3].removeAttribute("style")
+        document.body.appendChild($cloneCards)
+        
+
+
+
+
+
+        //Modificar elementos (Cool style)
+        console.clear()
+        console.log("############### Modificar elementos (Cool style) ###############")
+        /*
+        .insertAdjacent..
+            .insertAdjacentElement(position, el)
+            .insertAdjacentHTML(position,el)
+            .insertAdjacentText(position,el)
+
+        Posiciones:
+            beforebegin (hermano anterior) 
+            afterbegin (primer hijo)
+            beforeend (ultimo hijo)
+            afterend (hermano siguiente)
+        */
+       //Creo 
+        const $newCardCool1 = document.createElement("figure")
+        $newCardCool1.innerHTML =  `<img src="https://placeimg.com/200/200/any" alt="any">
+        <figcaption>afterbegin</figcaption>`
+        $newCardCool1.classList.add("card")
+
+        $cloneCards.insertAdjacentElement("afterbegin",$newCardCool1)
+
+        const $newCardCool2 = document.createElement("figure")
+        let $contentCard =  `<img src="https://placeimg.com/200/200/any" alt="any">
+        <figcaption></figcaption>`
+        $newCardCool2.classList.add("card")
+        $newCardCool2.insertAdjacentHTML("beforeend",$contentCard)
+        $newCardCool2.querySelector("figcaption").insertAdjacentText("afterbegin","Usando insertAdjasentText")
+        
+        $cloneCards.insertAdjacentElement("afterbegin",$newCardCool2)
+        //Equivalente a esto se puede usar:
+        $cards.prepend($newCardCool2)
+        /*
+            before (hermano anterior) 
+            prepend (primer hijo)
+            apend (ultimo hijo)
+            after (hermano siguiente)
+        */
