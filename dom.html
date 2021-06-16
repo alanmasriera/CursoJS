@@ -8,7 +8,43 @@
     <style>
         :root{
             --yellow-color: #f7df1e;
+            --red-color: #fa0303;
             --dark-color: #222;
+            --black-color: Black;
+            --gray-color:rgb(63, 63, 63);
+            --white-color: rgb(221, 247, 255);
+            --cards-color: rgb(248, 0, 0);
+            --cards-bkgColor: rgb(255, 255, 255);
+        }
+        .card{
+            display: inline-block;
+            background-color: var(--dark-color);
+            color: var(--yellow-color);
+        }
+        .cardEsp{
+            display: inline-block;
+            background-color: var(--gray-color);
+            color: var(--red-color);
+        }
+        .card figcaption{
+            padding: 1rem;
+        }
+        .cards{
+            border: thin solid var(--dark-color);
+            border-width: 5px;
+            padding: 3rem;
+        }
+        .rotate-45{
+            transform: rotate(45deg);
+        }
+        .rotate-135{
+            transform: rotate(135deg);
+        }
+        .opacity-80{
+            opacity: .8;
+        }
+        .sepia{
+            filter: sepia(0);
         }
     </style>
 </head>
@@ -40,6 +76,7 @@
         Nesciunt nulla culpa corrupti delectus doloribus atque iure ex qui, 
         cum quod cumque dolore incidunt architecto sequi.
     </p>
+    
     <!-- Con esto genero el siguiente html
     nav#menu>ul>li*5>a{Seccion $} -->
     <nav id="menu">
@@ -52,30 +89,35 @@
         </ul>
     </nav>
     <input type="text" name="nombre" placeholder="Nombre">
-    <a class="link-dom" href="dom.html" style="background-color:blue; color:orange;" data-id="1" data-description="Document Object Model">DOM</a>
+    <a class="link-dom" href="dom.html" style="background-color:red; color:orange;" data-id="1" data-description="Document Object Model">DOM</a>
     <section class="cards">
         <figure class="card">
-            <img src="https://placeimg.com/200/200/tech" alt="tech">
+            <img src="https://placeimg.com/200/200/tech" alt="Tech">
             <figcaption>Tech</figcaption>
         </figure>
         <figure class="card">
             <img src="https://placeimg.com/200/200/animals" alt="Animals">
             <figcaption>Animals</figcaption>
         </figure>
-        <figure class="card">
-            <img src="https://placeimg.com/200/200/people" alt="people">
+        <figure class="card" style="color:rgb(155, 76, 76);">
+            <img src="https://placeimg.com/200/200/people" alt="People">
             <figcaption>people</figcaption>
         </figure>
-        <figure class="card">
+        <figure class="card" style="color:rgb(99, 90, 148);">
             <img src="https://placeimg.com/200/200/arch" alt="Arch">
             <figcaption>Arch</figcaption>
         </figure>
         <figure class="card">
-            <img src="https://placeimg.com/200/200/nature" alt="N ature">
+            <img src="https://placeimg.com/200/200/nature" alt="Nature">
             <figcaption>Nature</figcaption>
         </figure>
     </section>
-
+    <template id="template-card">
+        <figure class="card">
+            <img>
+            <figcaption></figcaption>
+        </figure>
+    </template>>
 
     <script src=js/dom.js></script>
 </body>

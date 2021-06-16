@@ -23,6 +23,12 @@
         }, 3000);
         //document.write("<h2>Esto es un texto agregado desde DOM)</h2>")
         
+
+
+
+
+
+
         
         //Nodos
         console.clear()
@@ -43,6 +49,12 @@
         console.log(document.querySelectorAll(".card")[2])
         console.log(document.querySelectorAll("#menu"))
         console.log(document.querySelectorAll("#menu li"))
+
+
+
+
+
+
 
         //Atributes
         console.clear()
@@ -72,6 +84,11 @@
 
         console.log($linkDOM.hasAttribute("rel"))
         $linkDOM.removeAttribute("rel")
+
+
+
+
+
 
         // data-Attributes Obtener,modificar, imprimir
         console.log($linkDOM.getAttribute("data-description"))
@@ -103,6 +120,10 @@
         $linkDOM2.style.marginRight= "auto"
         $linkDOM2.style.padding = "1rem"
         $linkDOM2.style.borderRadius = "1rem"
+        $linkDOM2.style.backgroundColor = "Blue"
+
+
+
 
 
         //Variables CSS - custom properties CSS
@@ -119,5 +140,222 @@
 
         //si lo modifino en el estilo cambia pero no aplica porque sigue aplicando el que tengo seteado en la variable de js varDarkColor, tengo que actualizarlo
         $html.style.setProperty("--dark-color","pink")
+        $html.style.setProperty("--dark-color","Black")
         varDarkColor = getComputedStyle($html).getPropertyValue("--dark-color")
         //$body.style.backgroundColor = varDarkColor
+        varBlackColor = getComputedStyle($html).getPropertyValue("--black-color")
+        varWhiteColor = getComputedStyle($html).getPropertyValue("--white-color")
+        varCardsColor = getComputedStyle($html).getPropertyValue("--cards-color")
+        varBkgCardsColor = getComputedStyle($html).getPropertyValue("--cards-bkgColor")
+        $body.style.backgroundColor = varWhiteColor
+        $body.style.color = varBlackColor
+        const $cards = document.querySelector(".cards")
+        $cards.style.backgroundColor = varBkgCardsColor
+        const $allCard = document.querySelectorAll(".card")[1]
+        console.log("asd")
+        $allCard.style.color = varCardsColor
+
+
+
+
+
+        //Clases CSS
+        console.clear()
+        console.log("############### Clases CSS ###############")
+        
+        const $card = document.querySelector(".card")
+        console.log($card.className)
+        console.log($card.classList)
+        
+        //veo que card no contiene la clase rotate-45
+        console.log($card.classList.contains("rotate-45"))
+        
+        //entonces la agrego
+        $card.classList.add("rotate-45")
+        console.log($card.classList.contains("rotate-45"))
+
+        //tambien podemso deliminar
+        $card.classList.remove("rotate-45")
+
+        //Toggle agrega si no existe o elimina si existe
+        $card.classList.toggle("rotate-45")
+
+        //replace reemplaza una clase por otra
+        $card.classList.replace("rotate-45","rotate-135")
+
+        //para varios: (add, remove, toogle, etc.)
+        $card.classList.add("opacity-80","sepia")
+
+
+
+
+
+        //Texto y html
+        console.clear()
+        console.log("############### Texto y html ###############")
+        const $watIsDOM = document.getElementById("Que-es")
+
+        let text = `
+    <p>
+        El modelo de Objetos del documento (<b><i>DOM - Document Object Model</i></b>) es una API para documentos HTML y XML
+    </p>
+    <p>
+        Este provee una representacion estructural del documento, permitiendo modificar su contenido y presentacion cisual mediante codigo JS.
+    </p>
+    <p>
+        <mark>El DOM no es parte de la especificacion de JavaScript, es una API para los navegadores</mark>
+    </p>`;
+        console.log("ALGO")
+        $watIsDOM.innerText = text
+        //Otra variante
+        $watIsDOM.textContent = text
+        //Si queremos que interprete las etiquetas (inner inserta dentro de el elemnto 
+        //dodne estamos aprados)
+        $watIsDOM.innerHTML = text
+        //Outher reemplaza el elemento donde estamos por el nuevo por eso este ejemplo 
+        //no quedan parrafos dentro de parrafos, sino solo 3 parrafos
+        $watIsDOM.outerHTML = text
+        
+
+
+        
+        //Traversing
+        console.clear()
+        console.log("############### Traversing ###############")
+
+        const $cardsT = document.querySelector(".cards")
+        console.log($cardsT)
+        //todos los hijos, incluye hijos de hijos
+        console.log($cardsT.childNodes)
+        //solo hijos directos
+        console.log($cardsT.children)
+        console.log($cardsT.children[2])
+        //padre
+        console.log($cardsT.parentElement)
+        //da el primer nodo dentro, da texto y es un slato de lina porqu los espacios, 
+        //tabs y enters en html son un tipo de nodo, si la quito el primer nodo sera img
+        console.log($cardsT.firstChild)
+        //para filtrar tipos de hijos elementos
+        console.log($cardsT.firstElementChild)
+        console.log($cardsT.lastElementChild)
+        //hermano anterior y posterior (tambien existe sin element para buscar otro tipo de nodo)
+        console.log($cardsT.previousSibling)
+        console.log($cardsT.previousElementSibling)
+        console.log($cardsT.nextElementSibling)
+        //closest Busca el padre mas cercano del tipo de selector que le demos
+        console.log($cardsT.closest("body"))
+        console.log($cardsT.children[3].closest("section"))
+
+
+
+
+
+        //Creando elementos y fragmentos
+        console.clear()
+        console.log("############### Creando elementos y fragmentos ###############")
+
+        const $figure = document.createElement("figure")
+        const $img = document.createElement("img")
+        const $figcaption = document.createElement("figcaption")
+        const $figcaptionText = document.createTextNode("Animals 2")
+        
+
+        $img.setAttribute("src","https://placeimg.com/200/200/animals")
+        $img.setAttribute("alt","Animals")
+
+        $figcaption.appendChild($figcaptionText)
+        $figure.appendChild($img)
+        $figure.appendChild($figcaption)
+        $cards.appendChild($figure)
+        //Esto no tiene la clase q le da el estilo, por eso le agrego la clase
+        $figure.classList.add("card")
+
+        //Agregp ptra de otra forma ES RECOMENDABLE LA FORMA ANTERIOR
+        const $figure2 = document.createElement("figure")
+        $figure2.innerHTML = `<img src="https://placeimg.com/200/200/people" alt="People">
+        <figcaption>People 2</figcaption>`
+        $figure2.classList.add("card")
+        $cards.appendChild($figure2)
+
+        //Para hacerlo dinamicamente (Luego en AJAX lo hacemos mejor)
+        const estaciones = ["Primavera","Verano","Otoño","Invierno"]
+        const $ul = document.createElement("ul")
+        //Esto no es buena practica
+        document.write("<h3>Estaciones del año</h3>")
+        document.body.appendChild($ul)
+        estaciones.forEach(el => {
+            const $li = document.createElement("li")
+            $li.textContent = el
+            $ul.appendChild($li)
+        })
+
+        //tambien lo puedo hacer con innerHTML
+        const continentes = ["Africa","America","Asia","Europa","Oseania"]
+        const $ul2 = document.createElement("ul")
+        document.write("<h3>Continentes del mundo</h3>")
+        document.body.appendChild($ul2)
+        continentes.forEach(el => { $ul2.innerHTML += `<li>${el}</li>`})
+
+        //Fragmento del dom es para agrupar cambios al dom y luego poder insertarlso todos juntos 
+        //para no sobrecargar y ganar velocidad
+        const meses = ["Enero","Febrero","Marzo","Abril","Marzo","Junio","Julio",
+        "Agosto","Septiembre","Octubre","Noviembre","Diciembre"]
+        $ul3 = document.createElement("ul")
+        $fragment = document.createDocumentFragment()
+        meses.forEach(el => {
+            const $li = document.createElement("lI")
+            $li.textContent= el
+            $fragment.appendChild($li)
+        })
+        document.write("<h3>Meses del año</h3>")
+        $ul3.appendChild($fragment)
+        document.body.appendChild($ul3)
+
+
+    
+
+
+        //Templates HTML
+        console.clear()
+        console.log("############### Templates HTML ###############")
+        const $template = document.getElementById("template-card").content
+        const $fragmentT = document.createDocumentFragment()
+        const cardContent = [
+            {
+                title: "Tecnologia",
+                img: "https://placeimg.com/200/200/tech"
+            },
+            {
+                title: "Animales",
+                img: "https://placeimg.com/200/200/animals"
+            },
+            {
+                title: "Arquitectura",
+                img: "https://placeimg.com/200/200/arch"
+            },
+            {
+                title: "Gente",
+                img: "https://placeimg.com/200/200/people"
+            },
+            {
+                title: "Naturaleza",
+                img: "https://placeimg.com/200/200/nature"
+            }
+        ]
+        const $figureTemplate = $template.children[0]
+        console.log("Algo")
+        console.log($figure2)
+        console.log($figureTemplate)
+        $figureTemplate.classList.add("cardEsp")
+        cardContent.forEach(el => {
+            //vamos a modificar el nodo template, luego debemos clonmarlo porque hay solo 1 
+            //al q vamos a ir modificando en cada ciclo
+            $template.querySelector("img").setAttribute("src",el.img)
+            $template.querySelector("img").setAttribute("alt",el.title)
+            $template.querySelector("figcaption").textContent = el.title
+            //debo clonarlo (True es para que copie la estructura interna)
+            let $clone = document.importNode($template, true)
+            $fragmentT.appendChild($clone)
+        })
+        
+        $cards.appendChild($fragmentT)
