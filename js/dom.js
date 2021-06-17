@@ -548,7 +548,11 @@
         //Delegacion de eventos      
         console.clear()
         console.log("############### Delegacion de eventos  ###############")
-
+        function flujoEventos2(e){
+            console.log(`flujoEventos2 Hola soy ${this.className}, el click lo origino ${e.target.className}`)
+            //Esta linea elimina la propagacion para que no continue a otros
+            e.stopPropagation()
+        }
         const $divEventos2 = document.querySelectorAll(".eventos-flujo2 div")
         //Podemos saber a que elemento de todo el documento le hicimos click
         document.addEventListener("click",(e)=>{
@@ -558,7 +562,7 @@
             }
             if(e.target.matches(".eventos-flujo2 div")){
                 //saldra undefined porque el elemento en si es el documento
-                flujoEventos(e)
+                flujoEventos2(e)
             }
         })
         
