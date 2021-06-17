@@ -480,3 +480,127 @@
         //Eventos con Parámetros y Remover Eventos 
         console.clear()
         console.log("############### Eventos con Parámetros y Remover Eventos  ###############")
+        function saludar(nombre = "Desconocido"){
+            alert(`Hola ${nombre}`)
+            console.log(event)
+        }
+        //la funcion manejadora no puede tomar parametros, nisiquiera los por defecto
+        $eventoMultiple.addEventListener("click",saludar)
+        //Por eso lo hacemos como una arrow function para poder mandarle lo necesario
+        $eventoMultiple.addEventListener("click",()=>saludar())
+        $eventoMultiple.addEventListener("click",()=>{
+            saludar("Pepe")
+            saludar("Alan")
+        })
+
+        //para remover un evento debo declarar una funcion asi que luego llamare desde otro evento
+        const removerDobleClick = (e) =>{
+            alert(`Removiento evento de tipo: ${e.type}`)
+            console.log(e)
+            $eventoRemover.removeEventListener("dblclick",removerDobleClick)
+            $eventoRemover.disabled = true
+        }
+        const $eventoRemover = document.getElementById("evento-remover")
+        $eventoRemover.addEventListener("dblclick",removerDobleClick)
+        
+
+
+
+
+
+
+
+
+        //Flujo de eventos (Burbuja y captura) y stopPropagation
+        console.clear()
+        console.log("############### Flujo de eventos (Burbuja y captura)  ###############")
+        const $divsEventos = document.querySelectorAll(".eventos-flujo div")
+        function flujoEventos(e){
+            console.log(`Hola soy ${this.className}, el click lo origino ${e.target.className}`)
+            //Esta linea elimina la propagacion para que no continue a otros
+            e.stopPropagation()
+        }
+        console.log($divsEventos)
+        $divsEventos.forEach(div =>{
+            //Fase de burbuja (de adentr hacia afuera)
+            div.addEventListener("click",flujoEventos)
+            //Fase de captura
+            //Esta funcion addlistener tiene un 3er parametro opcional: defecto false, puedo poner true
+            div.addEventListener("click",flujoEventos,true)
+            //tambien puedo pasar un objeto en ese parametro
+            div.addEventListener("click",flujoEventos,{
+                capture: false, //Este es el que llamamos antes
+                once: true, //este hace que el evento se ejecute solo una vez, luego no se repite
+            })
+        })
+        const $linkEventos = document.querySelector(".eventos-flujo a")
+        $linkEventos.addEventListener("click",(e)=>{
+            alert("Esto es una alerta del link d eventos")
+            //Cancelo la accion que hace, en este caso la apertura del link
+            e.preventDefault()
+            //Esto lo pongo porque el enlace esta dentro del div3 y si no lo corto tambien ejecuta el evento de dicho div
+            e.stopPropagation()
+        }) 
+
+        
+        
+        
+        //Delegacion de eventos      
+        console.clear()
+        console.log("############### Delegacion de eventos  ###############")
+
+        const $divEventos2 = document.querySelectorAll(".eventos-flujo2 div")
+        //Podemos saber a que elemento de todo el documento le hicimos click
+        document.addEventListener("click",(e)=>{
+            console.log("click en:",e.target)
+            if(e.target.matches(".eventos-flujo2 a")){
+            alert("Es un alert de delegacion de eventos. Seleccionaste un <a> de eventos-flujo2")
+            }
+            if(e.target.matches(".eventos-flujo2 div")){
+                //saldra undefined porque el elemento en si es el documento
+                flujoEventos(e)
+            }
+        })
+        
+
+
+
+
+
+        //Manejo del BOM
+        console.clear()
+        console.log("############### Manejo del BOM  ###############")
+        window.addEventListener("resize",e=>{
+            console.clear()
+            console.log("Evento resize")
+            console.log(window.innerWidth) 
+            console.log(window.innerHeight)
+            console.log(window.outerWidth)
+            console.log(window.outerHeight)
+            
+        })
+        window.addEventListener("scroll",e=>{
+            console.clear()
+            console.log("Evento scroll")
+            console.log(window.scrollX)
+            console.log(window.scrollY)
+            console.log(e)
+        })
+        
+        window.addEventListener("load",e=>{
+            console.log("Evento load")
+            console.log(window.scrollX)
+            console.log(window.scrollY)
+            console.log(e)
+        })
+
+        //Este metodo es mucho mas rapido que el load porque se ejecuta antes de cargar los estilos, imagenes, etc
+        document.addEventListener("DOMContentLoaded",e=>{
+            console.log("Evento DOMContentLoaded")
+            console.log(window.scrollX)
+            console.log(window.scrollY)
+            console.log(e)
+        })
+
+
+

@@ -52,6 +52,38 @@
         .sepia{
             filter: sepia(0);
         }
+
+        .eventos-flujo div{
+            padding: 4rem;
+            font-size: 2rem;
+            text-align: center;
+        }
+
+        .uno{
+            background-color: yellow;
+        }
+        .dos{
+            background-color: gold;
+        }
+        .tres{
+            background-color: lightyellow;
+        }
+
+        .eventos-flujo2 div{
+            padding: 2rem;
+            font-size: 1rem;
+            text-align: center;
+        }
+
+        .one{
+            background-color: rgb(0, 255, 34);
+        }
+        .two{
+            background-color: rgb(0, 107, 9);
+        }
+        .tree{
+            background-color: rgb(0, 83, 32);
+        }
     </style>
 </head>
 <body>
@@ -132,7 +164,38 @@
     <button id="evento-semantico">Eveno con manejador semantico</button>
     <br><br>
     <button id="evento-multiple">Eveno con manejador multiple</button>
-
+    <br><br>
+    <button id="evento-remover">removiento eventos con manejadores multiples</button>
+    <br><br>
+    <h4>Flujo de Eventos</h4>
+    <section class="eventos-flujo">
+        <div class="uno">
+            1
+            <div class="dos">
+                2
+                <div class="tres">
+                    3
+                    <a href="https://jonmircha.com" target="_blank" rel="noopener">jonmircha.com</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="eventos-flujo2">
+        <div class="one">
+            1
+            <div class="two">
+                2
+                <div class="tree">
+                    3
+                    <a href="https://jonmircha.com" target="_blank" rel="noopener">jonmircha.com</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <h3 style="width: 2000px; text-align: center" >H3 muy ancho</h3>
+    
+    
+    
     <script src=js/dom.js></script>
 </body>
 </html>
