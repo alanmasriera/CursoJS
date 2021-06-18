@@ -1,16 +1,9 @@
-console.log("Entramos a index")
+import hamburgerMenu from "./menu_hamburguesa.js";
+import { showTime } from "./reloj.js";
 
-document.addEventListener("click",(e)=>{
-    console.log("click en:",e.target)
-    //eventoClick(e)
-    if(e.target.matches(".topnav a")){
-        console.log("Es un elemento <a> de tapnav")
-
-        eventoClick(e)
-    }
+const  d = document
+console.log("En index_DOM")
+d.addEventListener("DOMContentLoaded", (e) => {
+    hamburgerMenu(".panel-btn",".panel",".menu a")
 })
-function eventoClick(e){
-    console.log(`eventoClick - soy ${this} - el click lo origino ${e.target.href}`)
-    
-}
-
+showTime()
