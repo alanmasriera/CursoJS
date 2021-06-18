@@ -1,4 +1,4 @@
-export default function reloj(btnIniciarReloj, btnPararReloj, btnIniciarAlarma, btnPararAlarma){
+export default function reloj(btnIniciarReloj, btnPararReloj, btnIniciarAlarma, btnPararAlarma,){
     console.log("En funcion reloj")
     const d = document
     d.addEventListener("click", (e) =>{
