@@ -25,7 +25,7 @@
     <nav class="menu">
       <!-- a[href="seccion$"]*5{Seccion $} -->
       <a href="#seccion1">Reloj Digital y Alarma Sonora</a>
-      <a href="#seccion2">Seccion 2</a>
+      <a href="#seccion2">Eventos de teclado</a>
       <a href="#seccion3">Seccion 3</a>
       <a href="#seccion4">Seccion 4</a>
       <a href="#seccion5">Seccion 5</a>
@@ -39,15 +39,15 @@
         <div id="reloj"></div>
         <div id="MyClockDisplay" class="clock" onload="showTime()"></div>
         <div class="botones-reloj">
-          <button>Iniciar reloj</button>
-          <button>Parar reloj</button>
-          <button>Iniciar alarma</button>
-          <button>Parar alarma</button>
+          <button id="iniciar-reloj">Iniciar reloj</button>
+          <button id="parar-reloj">Parar reloj</button>
+          <button id="iniciar-alarma">Iniciar alarma</button>
+          <button id="parar-alarma">Parar alarma</button>
         </div>
       </section>
     </section>
     <section id="seccion2" class="section">
-      <h2>Seccion 2</h2>
+      <h2>Eventos de teclado</h2>
     </section>
     <section id="seccion3" class="section">
       <h2>Seccion 3</h2>
@@ -60,6 +60,6 @@
     </section>
   </main>
   
-  <script src="js/index_DOM.js" type="module"></script>
+  <script src="./index_DOM.js" type="module"></script>
 </body>
 </html>

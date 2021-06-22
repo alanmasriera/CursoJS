@@ -1,23 +1,45 @@
-export default function reloj(btnIniciarReloj, btnPararReloj, btnIniciarAlarma, btnPararAlarma,){
-    console.log("En funcion reloj")
-    const d = document
+const d = document
+
+export function reloj(btnIniciarReloj, btnPararReloj){
+    let clockInterval
     d.addEventListener("click", (e) =>{
         if(e.target.matches(btnIniciarReloj)){
-            d.querySelector(panel).hide()
+            showTime()
+            clockInterval = setInterval(() => {
+                showTime()
+            }, 1000);
+            e.target.disabled = true
         }
-        if(e.target.matches(btnIniciarReloj)){
-            
+        if(e.target.matches(btnPararReloj)){
+            d.querySelector(".clock").innerText = ""
+            clearInterval(clockInterval)
+            d.querySelector(btnIniciarReloj).disabled = false
         }
-        if(e.target.matches(btnIniciarReloj)){
-            
+
+    })
+}
+export function alarma(sound, btnIniciarAlarma, btnPararAlarma){
+    let alarmTempo
+    const $alarm = d.createElement("audio")
+    $alarm.src = sound
+    d.addEventListener("click", (e) =>{    
+        if(e.target.matches(btnIniciarAlarma)){
+            alarmTempo = setTimeout(() => {
+                $alarm.play()
+            }, 2000);
+            e.target.disabled = true
         }
-        if(e.target.matches(btnIniciarReloj)){
-            
+        if(e.target.matches(btnPararAlarma)){
+            clearTimeout(alarmTempo)
+            $alarm.pause()
+            d.querySelector(btnIniciarAlarma).disabled = false
         }
     })
 }
-    
+
+
 export function showTime(){
+    console.log("showTime")
     var date = new Date();
     var h = date.getHours(); // 0 - 23
     var m = date.getMinutes(); // 0 - 59
@@ -41,7 +63,7 @@ export function showTime(){
     document.getElementById("MyClockDisplay").innerText = time;
     document.getElementById("MyClockDisplay").textContent = time;
     
-    setTimeout(showTime, 1000);
+    
     
 }
 
