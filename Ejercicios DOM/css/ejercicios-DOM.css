@@ -2,7 +2,7 @@
 :root {
     --main-font: sans.serif;
     --font-size: 16px;
-    --main-color: #5a5a5a;
+    --main-color: #ffee00e5;
     --second-color: #222;
     --main-modal-color: rgba(247,222,30,0.85);
     --second-modal-color: rgba(34,34,34,0.85);
@@ -120,4 +120,19 @@ img{
 
 .clock {
     font-size: 30px;
+}
+
+/* Eventos de teclado */
+.stage{
+    display: flex;
+    min-height: 50vh;
+    background-color: var(--second-color);
+}
+
+.ball{
+    margin:auto;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    background-color: var(--main-color);
 }
