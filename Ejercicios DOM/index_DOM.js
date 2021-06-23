@@ -9,7 +9,7 @@ d.addEventListener("DOMContentLoaded", (e) => {
     hamburgerMenu(".panel-btn",".panel",".menu a")
     reloj("#iniciar-reloj","#parar-reloj")
     alarma("assets/alarma-morning-mix.mp3","#iniciar-alarma","#parar-alarma")
-    countdown()
+    countdown("countdown","Jun 01 2022 00:00:00","Feliz nuevo año")
 })
 
 d.addEventListener("keydown",e=>{
