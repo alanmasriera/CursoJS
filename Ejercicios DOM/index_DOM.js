@@ -1,14 +1,20 @@
+import getGeolocation from "./geolocalizacion.js";
 import scrollTopButton from "./js/boton_scroll.js";
 import countdown from "./js/cuenta_regresiva.js";
 import userDeviceInfo from "./js/deteccion_dispositivos.js";
 import networkStatus from "./js/deteccion_red.js";
 import webCam from "./js/deteccion_webcam.js";
+import searchFilters from "./js/filtro_busquedas.js";
 import hamburgerMenu from "./js/menu_hamburguesa.js";
 import responsiveMedia from "./js/objeto_responsive.js";
 import responsiveTester from "./js/prueba_responsive.js";
 import { showTime, reloj, alarma} from "./js/reloj.js";
+import slider from "./js/responsive_slider.js";
+import scrollSpy from "./js/scroll_espia.js";
+import draw from "./js/sorteo.js";
 import { shortcuts, moveBall } from "./js/teclado.js";
 import darkTheme from "./js/tema_oscuro.js";
+import smartVideo from "./js/video_inteligente.js";
 
 const  d = document
 console.log("En index_DOM")
@@ -33,6 +39,12 @@ d.addEventListener("DOMContentLoaded", (e) => {
     responsiveTester("responsive-tester")
     userDeviceInfo("user-device")
     webCam("webcam")
+    getGeolocation("geolocation")
+    searchFilters(".card-filter",".card")
+    draw("#winner-btn",".player")
+    slider()
+    scrollSpy()
+    smartVideo()
 })
 
 d.addEventListener("keydown",e=>{

@@ -8,7 +8,7 @@ export default function webCam(id){
         .then(stream => {
             console.log(stream)
             $video.srcObject = stream
-            $video.onplay()
+            $video.play()
         })
-        .catch(err => console.log(`Sucecio el siguiente error!: ${err}`))
+        .catch(err => $video.insertAdjacentHTML("afterend",`<p>Sucedio el siguiente error: <mark>${err}</mark></p>`))
 }
