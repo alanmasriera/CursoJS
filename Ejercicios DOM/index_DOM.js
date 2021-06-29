@@ -6,6 +6,7 @@ import networkStatus from "./js/deteccion_red.js";
 import webCam from "./js/deteccion_webcam.js";
 import searchFilters from "./js/filtro_busquedas.js";
 import hamburgerMenu from "./js/menu_hamburguesa.js";
+import speechReader from "./js/narrador.js";
 import responsiveMedia from "./js/objeto_responsive.js";
 import responsiveTester from "./js/prueba_responsive.js";
 import { showTime, reloj, alarma} from "./js/reloj.js";
@@ -14,6 +15,7 @@ import scrollSpy from "./js/scroll_espia.js";
 import draw from "./js/sorteo.js";
 import { shortcuts, moveBall } from "./js/teclado.js";
 import darkTheme from "./js/tema_oscuro.js";
+import contactFormValidations from "./js/validaciones_formulario.js";
 import smartVideo from "./js/video_inteligente.js";
 
 const  d = document
@@ -45,6 +47,7 @@ d.addEventListener("DOMContentLoaded", (e) => {
     slider()
     scrollSpy()
     smartVideo()
+    contactFormValidations()
 })
 
 d.addEventListener("keydown",e=>{
@@ -54,3 +57,4 @@ d.addEventListener("keydown",e=>{
 
 darkTheme(".dark-theme-btn","dark-mode")
 networkStatus()
+speechReader()

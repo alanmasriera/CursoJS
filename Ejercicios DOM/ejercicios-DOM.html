@@ -38,7 +38,7 @@
       <a href="#seccion12" data-scroll-spy>Responsive Slider</a>
       <a href="#seccion13" data-scroll-spy>Video inteligente</a>
       <a href="#seccion14" data-scroll-spy>Validaciones de formulario</a>
-      <a href="#seccion15" data-scroll-spy>Seccion 15</a>
+      <a href="#seccion15" data-scroll-spy>Narrador</a>
     </nav>
   </aside>
   <main>
@@ -178,7 +178,7 @@
     </section>
     <section id="seccion14" class="section" data-scroll-spy>
       <h2>Validaciones de formulario</h2>
-      <form class="contact-form">
+      <form class="contact-form" action="https://formsubmit.co/alan.masriera@gmail.com" method="POST" target="_blank">
         <legend>Envianos tus comentarios</legend>
         <input type="text" name="name" placeholder="Escribe tu nombre" 
           title="Nombre solo acepta letras y espacios en blanco" pattern="^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$" 
@@ -188,7 +188,7 @@
           pattern="^[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})$" required>
         <input type="text" name="subject" placeholder="Asunto a tratar" title="El asunto es requerido" required>
         <textarea name="comments" id="" cols="50" rows="5" placeholder="Escribe tus comentarios" 
-          data-patern="^.{1,255}$" title="El comentario no debe exceder los 255 caracteres" required></textarea>
+          data-pattern="^.{1,255}$" title="El comentario no debe exceder los 255 caracteres" required></textarea>
         <input type="submit" value="Enviar">
         <div class="contact-form-loader none">
           <img src="assets/tail-spin.svg" alt="Cargando">
@@ -199,7 +199,14 @@
       </form>
     </section>
     <section id="seccion15" class="section" data-scroll-spy>
-      <h2>Seccion 15</h2>
+      <h2>Narrador</h2>
+      <select id="speech-select">
+        <option value="">--- Elige una voz ---</option>
+      </select>
+      <br><br>
+      <textarea id="speech-text" cols="50" rows="5" placeholder="Ingresa texto para leer"></textarea>
+      <br><br>
+      <button id="speech-btn">Leer texto</button>
     </section>
   </main>
   <button class="scroll-top-btn hidden">&#11014;</button>

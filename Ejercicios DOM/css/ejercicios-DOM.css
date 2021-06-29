@@ -425,7 +425,7 @@ img{
     transition: all 800ms ease;
 }
 
-.contact-form-error-is-active{
+.contact-form-error.is-active{
     display: block;
     animation: show-message 1s 1 normal 0s ease-out both;
 }
